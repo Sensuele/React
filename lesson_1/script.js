@@ -17,14 +17,14 @@ const sponsors = {
 
 const {cash, eu, rus} = sponsors;
 
-function calcCash(own = 0, everyCash) {
+const calcCash = (own = 0, everyCash) => {
     let total = everyCash.reduce((total, currentValue) => total + currentValue) + own;
     return total;
 }
 
 const money = calcCash(null, cash);
 
-function makeBusiness(owner, cash, emp, director = 'Victor') {
+const makeBusiness = (owner, cash, emp, director = 'Victor') => {
     
     const sumSponsors = eu.concat(rus, 'unexpected sponsor');
     console.log(`We have a business. Owner: ${owner}, director: ${director}. Our budget: ${cash}. And our employers: ${emp}`);
