@@ -1,5 +1,6 @@
 import {employersNames} from './employers';
-import monye from './money';
+import {money, eu, rus} from './money';
+
 const makeBusiness = (owner, cash, emp, director = 'Victor') => {
     
   const sumSponsors = eu.concat(rus, 'unexpected sponsor');

@@ -13,4 +13,4 @@ const calcCash = (own = 0, everyCash) => {
 
 const money = calcCash(null, cash);
 
-export money;
+export {money, eu, rus};
