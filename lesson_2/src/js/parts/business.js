@@ -1,14 +1,37 @@
 import {employersNames} from './employers';
 import {money, eu, rus} from './money';
 
-const makeBusiness = (owner, cash, emp, director = 'Victor') => {
-    
-  const sumSponsors = eu.concat(rus, 'unexpected sponsor');
-  console.log(`We have a business. Owner: ${owner}, director: ${director}. Our budget: ${cash}. And our employers: ${emp}`);
-  console.log('And we have a sponsors: ');
+class BusinessInfo{
+  constructor({
+      eu: eu, rus: rus, owner: owner, director: director, cash: cash, emp: emp} = {
+      eu: ['Google','Apple'], rus: ['Yandex','Mail']}
+  ){
+      this.eu = eu;
+      this. rus = rus;
+      this.owner = owner;
+      this.director = director;
+      this.cash = cash;
+      this.emp = emp;
 
-  console.log(...sumSponsors);
-
-  console.log(`Note. Be careful with ${eu[0]}. It's a huge risk.`);
+      this.init(); // Инициализация //
+  }
+  completeSponsors(){
+      this.sumSponsors = [...this.eu, ...this.rus, 'unexpected sponsor'];
+  }
+  makeBusiness(){
+      console.log(`We have a business. Owner: ${this.owner}, director: ${this.director}. Our budget: ${this.cash}. And our employers: ${this.emp}`);
+      console.log(`And we have a sponsors: ${this.sumSponsors.join(', ')}`);
+      console.log(`Note. Be careful with ${this.eu[0]}. It's a huge risk.`);
+  }
+  init(){
+      this.completeSponsors();
+      this.makeBusiness();
+  }
 }
-makeBusiness.apply(null, ['Sam', null, money, employersNames]);
+const mainBusiness = new BusinessInfo({
+  eu: eu,
+  rus: rus,
+  owner: 'Sam',
+  cash: money,
+  emp: employersNames,
+});
