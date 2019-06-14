@@ -101,19 +101,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 class BusinessInfo{
-  constructor({
-      eu: eu, rus: rus, owner: owner, director: director, cash: cash, emp: emp} = {
-      eu: ['Google','Apple'], rus: ['Yandex','Mail']}
-  ){
-      this.eu = eu;
-      this. rus = rus;
-      this.owner = owner;
-      this.director = director;
-      this.cash = cash;
-      this.emp = emp;
-
-      this.init(); // Инициализация //
-  }
+  constructor(eu, rus, owner, director, cash, emp ){
+    this.eu = eu;
+    this. rus = rus;
+    this.owner = owner;
+    this.director = director;
+    this.cash = cash;
+    this.emp = emp;
+}
   completeSponsors(){
       this.sumSponsors = [...this.eu, ...this.rus, 'unexpected sponsor'];
   }
@@ -122,18 +117,10 @@ class BusinessInfo{
       console.log(`And we have a sponsors: ${this.sumSponsors.join(', ')}`);
       console.log(`Note. Be careful with ${this.eu[0]}. It's a huge risk.`);
   }
-  init(){
-      this.completeSponsors();
-      this.makeBusiness();
-  }
+  
 }
-const mainBusiness = new BusinessInfo({
-  eu: _money__WEBPACK_IMPORTED_MODULE_1__["eu"],
-  rus: _money__WEBPACK_IMPORTED_MODULE_1__["rus"],
-  owner: 'Sam',
-  cash: _money__WEBPACK_IMPORTED_MODULE_1__["money"],
-  emp: _employers__WEBPACK_IMPORTED_MODULE_0__["employersNames"],
-});
+const mainBusiness = new BusinessInfo(_money__WEBPACK_IMPORTED_MODULE_1__["eu"], _money__WEBPACK_IMPORTED_MODULE_1__["rus"], 'Sam', _money__WEBPACK_IMPORTED_MODULE_1__["money"],_employers__WEBPACK_IMPORTED_MODULE_0__["employersNames"]);
+mainBusiness.makeBusiness();
 
 /***/ }),
 

@@ -2,19 +2,14 @@ import {employersNames} from './employers';
 import {money, eu, rus} from './money';
 
 class BusinessInfo{
-  constructor({
-      eu: eu, rus: rus, owner: owner, director: director, cash: cash, emp: emp} = {
-      eu: ['Google','Apple'], rus: ['Yandex','Mail']}
-  ){
-      this.eu = eu;
-      this. rus = rus;
-      this.owner = owner;
-      this.director = director;
-      this.cash = cash;
-      this.emp = emp;
-
-      this.init(); // Инициализация //
-  }
+  constructor(eu, rus, owner, director, cash, emp ){
+    this.eu = eu;
+    this. rus = rus;
+    this.owner = owner;
+    this.director = director;
+    this.cash = cash;
+    this.emp = emp;
+}
   completeSponsors(){
       this.sumSponsors = [...this.eu, ...this.rus, 'unexpected sponsor'];
   }
@@ -23,15 +18,7 @@ class BusinessInfo{
       console.log(`And we have a sponsors: ${this.sumSponsors.join(', ')}`);
       console.log(`Note. Be careful with ${this.eu[0]}. It's a huge risk.`);
   }
-  init(){
-      this.completeSponsors();
-      this.makeBusiness();
-  }
+  
 }
-const mainBusiness = new BusinessInfo({
-  eu: eu,
-  rus: rus,
-  owner: 'Sam',
-  cash: money,
-  emp: employersNames,
-});
+const mainBusiness = new BusinessInfo(eu, rus, 'Sam', money,employersNames);
+mainBusiness.makeBusiness();
