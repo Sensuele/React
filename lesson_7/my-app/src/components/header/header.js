@@ -46,7 +46,7 @@ const Header = () => {
                 </li>
             </HeaderLinks>
         </HeaderBlock>
-    ); 
+    );
 };
 
 export default Header;

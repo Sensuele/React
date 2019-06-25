@@ -1,14 +1,19 @@
-import React from 'react';
-import './errorMessage.css';
-import img from './error.jpg';
+import React from "react";
+import styled from "styled-components";
+import img from "./error.jpg";
+
+// import "./errorMessage.css";
+
+const ErrorImg = styled.img`
+  width: 100%;
+`;
 
 const ErrorMessage = () => {
   return (
-   <>
-     <img src={img} alt='error'></img>
-    <span>Something goes wrong</span>
-   </>
-  )
-}
-
+    <>
+      <ErrorImg src={img} alt="error" />
+      <span>Something goes wrong</span>
+    </>
+  );
+};
 export default ErrorMessage;
