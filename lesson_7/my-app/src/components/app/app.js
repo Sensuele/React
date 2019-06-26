@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-// import styled from "styled-components";
 import { Col, Row, Container } from "reactstrap";
 import { Button } from "reactstrap";
 import Header from "../header";
@@ -8,8 +7,9 @@ import ErrorMessage from "../errorMessage";
 
 import gotService from "../../services/gotService";
 import CharacterPage from "../pages/characterPage";
-import BookPage from "../pages/bookPage";
+import {BookPage, BookItem} from "../pages/bookPage";
 import HousePage from "../pages/housePage";
+import {BrowserRouter as Router, Route} from 'react-router-dom'
 
 import "./app.css";
 
@@ -39,7 +39,8 @@ export default class App extends Component {
       return <ErrorMessage />;
     }
     return (
-      <>
+      <Router>
+        <div className="app">
         <Container>
           <Header />
         </Container>
@@ -57,11 +58,24 @@ export default class App extends Component {
               </Button>
             </Col>
           </Row>
-          <CharacterPage />
-          <BookPage />
-          <HousePage />
+          <Route
+              path="/"
+              exact
+              component={() => <span className="welcome">Welcome to GOT DB </span>}
+            />
+            <Route path="/characters" component={CharacterPage} />
+            <Route path="/houses" component={HousePage} />
+            <Route path="/books" exact component={BookPage} />
+            <Route
+              path="/books/:id"
+              render={({ match }) => {
+                const { id } = match.params;
+                return <BookItem itemId={id} />;
+              }}
+            />
         </Container>
-      </>
+      </div>
+      </Router>
     );
   }
 }
