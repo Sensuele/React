@@ -9,9 +9,9 @@ const Counter = ({counter, inc, dec, clr}) => {
     <div  >
       <h1 className="counter">{counter}</h1>
       <div className="btns">
-        <div onClick={inc} className="btn btn-success" ></div>
+        <button onClick={inc} className="btn btn-success" ></button>
         <button onClick={dec} className="btn btn-warning" ></button>
-        <div onClick={clr} className="btn btn-danger" ></div>
+        <button onClick={clr} className="btn btn-danger" ></button>
       </div>
     </div>
   );
