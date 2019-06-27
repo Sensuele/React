@@ -1,38 +1,18 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
 import {createStore} from 'redux';
+import {Provider} from 'react-redux';
+import reducer from './reducer';
+import App from './components/app';
 
-const reducer = (state, action) => {
- switch (action.type) {
-   case "INC":
-     return state + 1;
-   case "DEC":
-     return state - 1;
-   case "CLR":
-     return 0;
-   default:
-     return 0
- }
-}
-
-const inc = () => ({type: "INC"});
-const dec = () => ({type: "DEC"});
-const clr = () => ({type: "CLR"});
 
 const store = createStore(reducer);
 
-document.querySelector(".btn-success").addEventListener("click", () => {
-  store.dispatch(inc());
-});
+  ReactDOM.render(
+    <Provider store={store}>
+      <App/>
+    </Provider>
+    , document.getElementById('root'));
 
-document.querySelector(".btn-warning").addEventListener("click", () => {
-  store.dispatch(dec());
-});
 
-document.querySelector(".btn-danger").addEventListener("click", () => {
-  store.dispatch(clr());
-});
 
-const update = () => {
-  document.querySelector("#counter").textContent = store.getState();
-}
-
-store.subscribe(update);
